@@ -1,0 +1,10 @@
+site,parameter,value
+HEM,g_base_mol_m2_s,4.132520813955775e-12
+HEM,g_amplitude_mol_m2_s,0.4385479437747135
+HEM,radiation_c_W_m2,50.82178726396538
+HEM,kVPD_kPa_inv,0.3700989312644671
+HEM,leaf_off_factor,0.7128716385886555
+HEM,SWC_dry_q10_index,-1.4527027027027026
+HEM,SWC_wet_q75_index,0.24342105263157876
+HEM,fixed_SOS_DOY,157.0
+HEM,fixed_EOS_DOY,338.0
