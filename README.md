@@ -50,7 +50,14 @@ The revision-specific analyses include:
 ```text
 harvard-forest-et-dynamics/
 ├── code/
-│   ├── 05_pet/                       # Revised PET analysis
+│   ├── 01_data_preparation/          # EMS and HEM source-table preparation
+│   ├── 02_gap_filling/               # Subdaily and daily gap filling
+│   ├── 03_phenology/                 # LAI and growing-season processing
+│   ├── 04_canopy_conductance/        # Flux-gradient conductance calculations
+│   ├── 05_pet/                       # Priestley–Taylor and revised PET analyses
+│   ├── 06_et_analysis/               # Meteorological and ET analyses
+│   ├── 07_machine_learning/          # Original site-specific XGBoost models
+│   ├── 08_manuscript_figures/        # Manuscript analysis and figure assembly
 │   ├── 09_et_partitioning/           # TEA and soil-moisture analyses
 │   └── 10_xgboost_reviewer_analysis/ # Temporal validation and sensitivity tests
 ├── data/
@@ -91,7 +98,14 @@ The included derived tables preserve the values used in the revised manuscript. 
 
 | Analysis | Script | Purpose |
 |---|---|---|
+| Flux preparation | `code/01_data_preparation/` | Prepare EMS and HEM tower variables |
+| Gap filling | `code/02_gap_filling/` | Generate subdaily and daily flux products |
+| Phenology | `code/03_phenology/phenology_source_workflow.py` | Process LAI and growing-season information |
+| Conductance | `code/04_canopy_conductance/` | Calculate and filter flux-gradient conductance |
 | Revised PET | `code/05_pet/15_forest_jarvis_penman_monteith_pet.py` | Calculate fixed-parameter Jarvis–Penman–Monteith PET |
+| Meteorological analysis | `code/06_et_analysis/15_analyze_meteorology.py` | Analyze long-term meteorological and ET patterns |
+| Original XGBoost models | `code/07_machine_learning/` | Fit EMS and HEM daily and subdaily models |
+| Manuscript figures | `code/08_manuscript_figures/16_master_manuscript_analysis_figures.py` | Assemble the original manuscript analyses and figures |
 | ET partitioning | `code/09_et_partitioning/02_run_nelson_tea.py` | Partition ET into transpiration and evaporation |
 | Conductance comparison | `code/09_et_partitioning/04_compare_et_vs_t_conductance.py` | Compare ET-based and transpiration-based conductance |
 | Soil-moisture sensitivity | `code/09_et_partitioning/07_soil_moisture_conductance_sensitivity.py` | Test whether conductance trends persist after accounting for upper-soil moisture |
@@ -115,7 +129,7 @@ Run commands from the repository root. The XGBoost script accepts an explicit re
 python code/10_xgboost_reviewer_analysis/01_xgboost_blocked_sensitivity.py --repo-root .
 ```
 
-The TEA, conductance, and PET scripts are organized in their analysis order under `code/09_et_partitioning/` and `code/05_pet/`. See [`documentation/data_sources.md`](documentation/data_sources.md) for the public source archives and [`documentation/workflow.md`](documentation/workflow.md) for the order of analysis. Historical preprocessing scripts are not included because the authoritative raw data are public and those scripts contain workstation-specific exploratory code that is not needed to reproduce the revised analyses from the supplied analysis-ready tables.
+The scripts are numbered by workflow stage. See [`code/README.md`](code/README.md) for a concise script inventory, [`documentation/data_sources.md`](documentation/data_sources.md) for the public source archives, and [`documentation/workflow.md`](documentation/workflow.md) for the analysis order. The earlier preprocessing and manuscript-assembly scripts preserve the original working analysis and may require path changes for a new computer. The final revision scripts in stages 09 and 10 locate the repository automatically.
 
 ## Data sources
 

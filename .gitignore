@@ -4,19 +4,6 @@ data/interim/
 data/processed/flux/AMF_*.csv
 outputs/et_partitioning/*_subdaily.csv
 
-# Historical preprocessing scripts with workstation-specific paths are kept
-# in the private working directory but are not part of this release.
-code/01_data_preparation/
-code/02_gap_filling/
-code/03_phenology/
-code/04_canopy_conductance/
-code/06_et_analysis/
-code/08_manuscript_figures/
-code/05_pet/14_calculate_priestley_taylor_pet.py
-code/09_et_partitioning/01_prepare_tea_inputs.py
-code/09_et_partitioning/06_audit_soil_moisture.py
-code/09_et_partitioning/08_build_combined_soil_moisture.py
-
 # Python and R working files
 __pycache__/
 *.py[cod]
